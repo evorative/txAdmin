@@ -2,11 +2,11 @@
 -- Feel free to open an issue or pull request in our GitHub.
 -- Official discord server: https://discord.gg/txAdmin
 
-author 'Tabarra'
+author 'Evorative Team'
 description 'Remotely Manage & Monitor your GTA5 FiveM Server'
-repository 'https://github.com/tabarra/txAdmin'
-version '6.0.2'
-ui_label 'txAdmin'
+repository 'https://github.com/evorative/txAdmin'
+version '0.2.5'
+ui_label 'evorative'
 
 rdr3_warning 'I acknowledge that this is a prerelease build of RedM, and I am aware my resources *will* become incompatible once RedM ships.'
 fx_version 'cerulean'
