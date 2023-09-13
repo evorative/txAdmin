@@ -73,8 +73,8 @@ if (fxServerVersion === 9999) {
 }
 
 //Getting txAdmin version
-const txAdminVersion = GetResourceMetadata(resourceName, 'version', 0);
-if (typeof txAdminVersion !== 'string' || txAdminVersion == 'null') {
+const EvorativeVersion = GetResourceMetadata(resourceName, 'version', 0);
+if (typeof EvorativeVersion !== 'string' || EvorativeVersion == 'null') {
     logDie('txAdmin version not set or in the wrong format');
 }
 
@@ -211,7 +211,7 @@ if (verboseConvar) {
 
 //Setting the variables in console without it having to importing from here (cyclical dependency)
 setConsoleEnvData(
-    txAdminVersion,
+    EvorativeVersion,
     txAdminResourcePath as string,
     isDevMode,
     verboseConvar
@@ -220,11 +220,11 @@ setConsoleEnvData(
 /**
  * Exports
  */
-export const txEnv = Object.freeze({
+export const EvoEnv = Object.freeze({
     osType,
     isWindows,
     fxServerVersion,
-    txAdminVersion,
+    EvorativeVersion,
     txAdminResourcePath,
     fxServerPath,
     dataPath
