@@ -52,7 +52,7 @@ export default class DynamicAds {
 
     //================================================================
     async update() {
-        const indexURL = 'https://raw.githubusercontent.com/tabarra/txAdmin/master/dynamicAds.json';
+        const indexURL = '../../dynamicAds.json';
         try {
             const res = await got(indexURL).json();
             let loginAds, mainAds;
