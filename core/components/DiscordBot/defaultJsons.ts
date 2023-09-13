@@ -45,19 +45,19 @@ export const defaultEmbedConfigJson = JSON.stringify({
     "offlineColor": "#A70B28",
     "buttons": [
         {
-          "emoji": "<:banshield:1151323684800311388>",
-          "label": "Install Launcher",
-          "url": "https://evoraguard.evorative.com/installer"
-        },
-        {
-          "emoji": "<:Evorative_medium:1151323146369122414>",
-          "label": "Evorative Discord",
-          "url": "https://discord.evorative.com"
-        },
-        {
-          "emoji": "<:icons8website100:1151323665724604466>",
-          "label": "Evorative Website",
-          "url": "https://evorative.com"
-        }
+            "emoji": "<:banshield:1151323684800311388>",
+            "label": "Install Launcher",
+            "url": "https://evoraguard.evorative.com/installer"
+          },
+          {
+            "emoji": "<:Evorative_white:1151459235318747156>",
+            "label": "Evorative Discord",
+            "url": "https://discord.evorative.com"
+          },
+          {
+            "emoji": "<:icons8website100:1151323665724604466>",
+            "label": "Evorative Website",
+            "url": "https://evorative.com"
+          }
     ]
 }, null, 2);
