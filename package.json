@@ -8,7 +8,6 @@
     "build": "rimraf dist tmp_core_tsc && npm run build:menu && npm run build:main",
     "build:menu": "vite build nui/ --mode production",
     "build:main": "node scripts/main-builder.js publish",
-    "prepare": "husky install",
     "dev:menu:browser": "vite dev nui/ --mode devNuiBrowser",
     "dev:menu:game": "vite build nui/ --watch --mode development",
     "dev:main": "node scripts/main-builder.js dev",
