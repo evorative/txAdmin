@@ -169,8 +169,8 @@ export default class DiscordBot {
             const serverClients = this.#txAdmin.playerlistManager.onlineCount;
             const serverMaxClients = this.#txAdmin.persistentCache.get('fxsRuntime:maxClients') ?? '??';
             const serverName = this.#txAdmin.globalConfig.serverName;
-            const message = `[${serverClients}/${serverMaxClients}] on ${serverName}`;
-            this.#client.user.setActivity(message, { type: ActivityType.Watching });
+            const message = `${serverClients}/${serverMaxClients} Players`;
+            this.#client.user.setActivity(message, { type: ActivityType.Playing });
         } catch (error) {
             console.verbose.warn(`Failed to set bot activity: ${(error as Error).message}`);
         }
