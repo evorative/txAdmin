@@ -1,7 +1,7 @@
 const modulename = 'DiscordBot:cmd:status';
 import humanizeDuration from 'humanize-duration';
 import { ActionRowBuilder, ButtonBuilder, ButtonStyle, ChannelType, ChatInputCommandInteraction, ColorResolvable, EmbedBuilder } from 'discord.js';
-import { txEnv } from '@core/globalData';
+import { EvoEnv } from '@core/globalData';
 import TxAdmin from '@core/txAdmin';
 import { cloneDeep } from 'lodash-es';
 import { embedder, ensurePermission, isValidButtonEmoji, isValidEmbedUrl, logDiscordAdminAction } from '../discordHelpers';
@@ -165,7 +165,7 @@ export const generateStatusMessage = (
         embed.setTimestamp();
         embed.setFooter({
             iconURL: 'https://media.evorative.com/img/logo/main.png',
-            text: `Evorative ${txEnv.txAdminVersion} • Updated every minute`,
+            text: `Evorative ${EvoEnv.EvorativeVersion} • Updated every minute`,
 
         });
     } catch (error) {

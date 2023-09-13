@@ -6,7 +6,7 @@ import chalk from 'chalk';
 import xssInstancer from '@core/extras/xss.js';
 import * as helpers from '@core/extras/helpers';
 import consts from '@core/extras/consts';
-import { convars, txEnv } from '@core/globalData';
+import { convars, EvoEnv } from '@core/globalData';
 import consoleFactory from '@extras/console';
 const console = consoleFactory(modulename);
 
@@ -28,7 +28,7 @@ const getRenderErrorText = (view, error, data) => {
 };
 const getWebViewPath = (view) => {
     if (view.includes('..')) throw new Error('Path Traversal?');
-    return path.join(txEnv.txAdminResourcePath, 'web', view + '.ejs');
+    return path.join(EvoEnv.txAdminResourcePath, 'web', view + '.ejs');
 };
 const getJavascriptConsts = (allConsts = []) => {
     return Object.entries(allConsts)
@@ -44,11 +44,11 @@ const THEME_DARK = 'theme--dark';
 const DEFAULT_AVATAR = 'img/default_avatar.png';
 
 const displayFxserverVersionPrefix = convars.isZapHosting && '/ZAP' || convars.isPterodactyl && '/Ptero' || '';
-const displayFxserverVersion = `${txEnv.fxServerVersion}${displayFxserverVersionPrefix}`;
+const displayFxserverVersion = `${EvoEnv.fxServerVersion}${displayFxserverVersionPrefix}`;
 
 function getEjsOptions(filePath) {
-    const webTemplateRoot = path.resolve(txEnv.txAdminResourcePath, 'web');
-    const webCacheDir = path.resolve(txEnv.txAdminResourcePath, 'web-cache', filePath);
+    const webTemplateRoot = path.resolve(EvoEnv.txAdminResourcePath, 'web');
+    const webCacheDir = path.resolve(EvoEnv.txAdminResourcePath, 'web-cache', filePath);
     return {
         cache: true,
         filename: webCacheDir,
@@ -97,7 +97,7 @@ async function renderView(view, reqSess, data, txVars) {
     data.adminUsername = (reqSess && reqSess.auth && reqSess.auth.username) ? reqSess.auth.username : 'unknown user';
     data.profilePicture = (reqSess && reqSess.auth && reqSess.auth.picture) ? reqSess.auth.picture : DEFAULT_AVATAR;
     data.isTempPassword = (reqSess && reqSess.auth && reqSess.auth.isTempPassword);
-    data.isLinux = !txEnv.isWindows;
+    data.isLinux = !EvoEnv.isWindows;
     data.showAdvanced = (convars.isDevMode || console.isVerbose);
     data.dynamicAd = txVars.isWebInterface && globals.dynamicAds.pick('main');
 
@@ -266,7 +266,7 @@ export default async function WebCtxUtils(ctx, next) {
             serverName: globals.config.serverName || globals.info.serverProfile,
             uiTheme: (ctx.cookies.get('txAdmin-darkMode') === 'true' || !isWebInterface) ? THEME_DARK : '',
             fxServerVersion: displayFxserverVersion,
-            txAdminVersion: txEnv.txAdminVersion,
+            txAdminVersion: EvoEnv.EvorativeVersion,
             txaOutdated: globals.updateChecker?.txUpdateData,
             fxsOutdated: globals.updateChecker?.fxsUpdateData,
             jsInjection: getJavascriptConsts({

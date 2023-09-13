@@ -19,7 +19,7 @@ import { customAlphabet } from 'nanoid';
 import dict51 from 'nanoid-dictionary/nolookalikes';
 
 import { setHttpCallback } from '@citizenfx/http-wrapper';
-import { convars, txEnv } from '@core/globalData';
+import { convars, EvoEnv } from '@core/globalData';
 import WebCtxUtils from './ctxUtils.js';
 import router from './router';
 import consoleFactory from '@extras/console';
@@ -106,7 +106,7 @@ export default class WebServer {
         const timeoutLimit = 35 * 1000; //REQ_TIMEOUT_REALLY_REALLY_LONG is 30s
         const jsonLimit = '16MB';
         this.app.use(async (ctx, next) => {
-            ctx.set('Server', `txAdmin v${txEnv.txAdminVersion}`);
+            ctx.set('Server', `txAdmin v${EvoEnv.EvorativeVersion}`);
             let timer;
             const timeout = new Promise((_, reject) => {
                 timer = setTimeout(() => {
@@ -122,7 +122,7 @@ export default class WebServer {
                     return ctx.body = '[no output from route]';
                 }
             } catch (error) {
-                const prefix = `[txAdmin v${txEnv.txAdminVersion}]`;
+                const prefix = `[txAdmin v${EvoEnv.EvorativeVersion}]`;
                 const reqPath = (ctx.path.length > 100) ? `${ctx.path.slice(0, 97)}...` : ctx.path;
                 const methodName = (error.stack && error.stack[0] && error.stack[0].name) ? error.stack[0].name : 'anonym';
 
@@ -165,7 +165,7 @@ export default class WebServer {
             }
         });
         //Setting up additional middlewares:
-        this.app.use(KoaServe(path.join(txEnv.txAdminResourcePath, 'web/public'), { index: false, defer: false }));
+        this.app.use(KoaServe(path.join(EvoEnv.txAdminResourcePath, 'web/public'), { index: false, defer: false }));
         this.app.use(this.sessionInstance);
         this.app.use(KoaBodyParser({ jsonLimit }));
 

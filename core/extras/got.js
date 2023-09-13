@@ -1,4 +1,4 @@
-import { convars, txEnv } from '@core/globalData';
+import { convars, EvoEnv } from '@core/globalData';
 import got from 'got';
 
 export default got.extend({
@@ -6,7 +6,7 @@ export default got.extend({
         request: 5000
     },
     headers: {
-        'User-Agent': `Evorative ${txEnv.txAdminVersion}`,
+        'User-Agent': `Evorative ${EvoEnv.EvorativeVersion}`,
     },
     localAddress: convars.forceInterface ? convars.forceInterface : undefined,
 });

@@ -2,7 +2,7 @@ const modulename = 'WebServer:SendDiagnosticsReport';
 import Logger from '@core/components/Logger';
 import ConfigVault from '@core/components/ConfigVault';
 import got from '@core/extras/got';
-import { txEnv } from '@core/globalData';
+import { EvoEnv } from '@core/globalData';
 import { GenericApiError } from '@shared/genericApiTypes';
 import { Context } from 'koa';
 import * as diagnosticsFuncs from './diagnosticsFuncs';
@@ -123,7 +123,7 @@ export default async function SendDiagnosticsReport(ctx: Context) {
     //Prepare report object
     const reportData = {
         $schemaVersion: 1,
-        $txVersion: txEnv.txAdminVersion,
+        $txVersion: EvoEnv.EvorativeVersion,
         diagnostics,
         txSystemLog,
         txActionLog,

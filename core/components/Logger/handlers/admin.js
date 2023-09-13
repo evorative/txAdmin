@@ -3,7 +3,7 @@ import fsp from 'node:fs/promises';
 import path from 'node:path';
 import chalk from 'chalk';
 import dateFormat from 'dateformat';
-import { txEnv } from '@core/globalData';
+import { EvoEnv } from '@core/globalData';
 import { LoggerBase, separator } from '@core/components/Logger/loggerUtils.js';
 import consoleFactory from '@extras/console';
 const console = consoleFactory(modulename);
@@ -20,7 +20,7 @@ export default class AdminLogger extends LoggerBase {
 
         };
         super(basePath, 'admin', lrDefaultOptions, lrProfileConfig);
-        const sepText = separator(`txAdmin v${txEnv.txAdminVersion} atop fxserver ${txEnv.fxServerVersion} Starting`);
+        const sepText = separator(`txAdmin v${EvoEnv.EvorativeVersion} atop fxserver ${EvoEnv.fxServerVersion} Starting`);
         this.lrStream.write(`\n${sepText}\n`);
         this.lrStream.on('rotated', (filename) => {
             this.lrStream.write(`\n${separator('Log Rotated')}\n`);

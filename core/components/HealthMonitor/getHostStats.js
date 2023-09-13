@@ -1,7 +1,7 @@
 const modulename = 'Monitor:HostStatus';
 import os from 'node:os';
 import si from 'systeminformation';
-import { txEnv } from '@core/globalData';
+import { EvoEnv } from '@core/globalData';
 import consoleFactory from '@extras/console';
 const console = consoleFactory(modulename);
 
@@ -22,7 +22,7 @@ export default async () => {
     //Getting memory usage
     try {
         let free, total, used;
-        if (txEnv.isWindows) {
+        if (EvoEnv.isWindows) {
             free = os.freemem() / giga;
             total = os.totalmem() / giga;
             used = total - free;

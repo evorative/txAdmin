@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import slash from 'slash';
 
-import { txEnv } from '@core/globalData';
+import { EvoEnv } from '@core/globalData';
 
 import { printBanner } from '@core/extras/banner';
 import setupProfile from '@core/extras/setupProfile';
@@ -27,7 +27,7 @@ import PersistentCache from '@core/components/PersistentCache';
 import UpdateChecker from '@core/components/UpdateChecker';
 
 import consoleFactory from '@extras/console';
-const console = consoleFactory(`v${txEnv.txAdminVersion}`);
+const console = consoleFactory(`v${EvoEnv.EvorativeVersion}`);
 
 
 //Helpers
@@ -115,10 +115,10 @@ export default class TxAdmin {
         globalsInternal.txAdmin = this;
 
         //Check if the profile exists and call setup if it doesn't
-        const profilePath = cleanPath(path.join(txEnv.dataPath, serverProfile));
+        const profilePath = cleanPath(path.join(EvoEnv.dataPath, serverProfile));
         if (!fs.existsSync(profilePath)) {
             try {
-                setupProfile(txEnv.osType, txEnv.fxServerPath, txEnv.fxServerVersion, serverProfile, profilePath);
+                setupProfile(EvoEnv.osType, EvoEnv.fxServerPath, EvoEnv.fxServerVersion, serverProfile, profilePath);
             } catch (error) {
                 console.error(`Failed to create profile '${serverProfile}' with error: ${(error as Error).message}`);
                 process.exit();

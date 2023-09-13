@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import fsp from 'node:fs/promises';
 import { cloneDeep } from 'lodash-es';
 import { nanoid } from 'nanoid';
-import { convars, txEnv } from '@core/globalData';
+import { convars, EvoEnv } from '@core/globalData';
 import CitizenFXProvider from './providers/CitizenFX.js';
 import { createHash } from 'node:crypto';
 import consoleFactory from '@extras/console';
@@ -29,7 +29,7 @@ const migrateProviderIdentifiers = (providerName, providerData) => {
 
 export default class AdminVault {
     constructor() {
-        this.adminsFile = `${txEnv.dataPath}/admins.json`;
+        this.adminsFile = `${EvoEnv.dataPath}/admins.json`;
         this.adminsFileHash = null;
         this.admins = null;
         this.refreshRoutine = null;

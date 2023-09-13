@@ -6,7 +6,7 @@ import fse from 'fs-extra';
 import open from 'open';
 import YAML from 'js-yaml';
 import getOsDistro from '@core/extras/getOsDistro.js';
-import { txEnv } from '@core/globalData';
+import { EvoEnv } from '@core/globalData';
 import recipeEngine from './recipeEngine.js';
 import consoleFactory from '@extras/console';
 const console = consoleFactory(modulename);
@@ -107,7 +107,7 @@ export const parseValidateRecipe = (rawRecipe) => {
         outRecipe.onesync = onesync;
     }
     if (typeof recipe['$minFxVersion'] == 'number') {
-        if (recipe['$minFxVersion'] > txEnv.fxServerVersion) throw new Error(`this recipe requires FXServer v${recipe['$minFxVersion']} or above`);
+        if (recipe['$minFxVersion'] > EvoEnv.fxServerVersion) throw new Error(`this recipe requires FXServer v${recipe['$minFxVersion']} or above`);
         outRecipe.fxserverMinVersion = recipe['$minFxVersion']; //useless for now
     }
     if (typeof recipe['$engine'] == 'number') {
@@ -288,7 +288,7 @@ export class Deployer {
                 if (contextVariables.$step) {
                     msg += '\nDebug/Status: '
                         + JSON.stringify([
-                            txEnv.txAdminVersion,
+                            EvoEnv.EvorativeVersion,
                             await getOsDistro(),
                             contextVariables.$step
                         ]);
@@ -330,7 +330,7 @@ export class Deployer {
         //Else: success :)
         this.customLog('Deploy finished and folder validated. All done!');
         this.step = 'configure';
-        if (txEnv.isWindows) {
+        if (EvoEnv.isWindows) {
             try {
                 await open(path.normalize(this.deployPath), { app: 'explorer' });
             } catch (error) { }

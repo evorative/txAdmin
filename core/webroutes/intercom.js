@@ -1,6 +1,6 @@
 const modulename = 'WebServer:Intercom';
 import { cloneDeep }  from 'lodash-es';
-import { convars, txEnv } from '@core/globalData';
+import { convars, EvoEnv } from '@core/globalData';
 import consoleFactory from '@extras/console';
 const console = consoleFactory(modulename);
 
@@ -29,7 +29,7 @@ export default async function Intercom(ctx) {
             return ctx.send(globals.statisticsManager.currHbData);
         } catch (error) {
             return ctx.send({
-                txAdminVersion: txEnv.txAdminVersion,
+                txAdminVersion: EvoEnv.EvorativeVersion,
                 success: false,
             });
         }
@@ -46,7 +46,7 @@ export default async function Intercom(ctx) {
     }
 
     return ctx.send({
-        txAdminVersion: txEnv.txAdminVersion,
+        txAdminVersion: EvoEnv.EvorativeVersion,
         success: false,
     });
 };

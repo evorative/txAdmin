@@ -1,6 +1,6 @@
 const modulename = 'WebServer:SetupGet';
 import path from 'path';
-import { convars, txEnv } from '@core/globalData';
+import { convars, EvoEnv } from '@core/globalData';
 import { engineVersion } from '../../extras/deployer';
 import consoleFactory from '@extras/console';
 const console = consoleFactory(modulename);
@@ -30,14 +30,14 @@ export default async function SetupGet(ctx) {
         isReset: (globalConfig.serverName !== null),
         deployerEngineVersion: engineVersion,
         serverProfile: globals.info.serverProfile,
-        txDataPath: txEnv.dataPath,
+        txDataPath: EvoEnv.dataPath,
         isZapHosting: convars.isZapHosting,
         windowsBatPath: null,
     };
 
-    if (txEnv.isWindows) {
-        const batFolder = path.resolve(txEnv.fxServerPath, '..');
-        renderData.windowsBatPath  = path.join(batFolder, `start_${txEnv.fxServerVersion}_${globals.info.serverProfile}.bat`);
+    if (EvoEnv.isWindows) {
+        const batFolder = path.resolve(EvoEnv.fxServerPath, '..');
+        renderData.windowsBatPath  = path.join(batFolder, `start_${EvoEnv.fxServerVersion}_${globals.info.serverProfile}.bat`);
     }
 
     return ctx.utils.render('standalone/setup', renderData);

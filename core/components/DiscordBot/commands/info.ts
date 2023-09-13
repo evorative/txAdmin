@@ -4,7 +4,7 @@ import TxAdmin from '@core/txAdmin';
 import { parsePlayerId } from '@core/extras/helpers';
 import { embedder } from '../discordHelpers';
 import { findPlayersByIdentifier } from '@core/playerLogic/playerFinder';
-import { txEnv } from '@core/globalData';
+import { EvoEnv } from '@core/globalData';
 import humanizeDuration from 'humanize-duration';
 import consoleFactory from '@extras/console';
 const console = consoleFactory(modulename);
@@ -28,7 +28,7 @@ const humanizer = humanizeDuration.humanizer({
 
 const footer = {
     iconURL: 'https://media.evorative.com/img/logo/main.png',
-    text: `Evorative ${txEnv.txAdminVersion}`,
+    text: `Evorative ${EvoEnv.EvorativeVersion}`,
 }
 
 

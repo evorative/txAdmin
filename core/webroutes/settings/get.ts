@@ -1,6 +1,6 @@
 const modulename = 'WebServer:SettingsGet';
 import { cloneDeep }  from 'lodash-es';
-import { convars, txEnv } from '@core/globalData';
+import { convars, EvoEnv } from '@core/globalData';
 import localeMap from '@shared/localeMap';
 import { redactApiKeys } from '../../extras/helpers';
 import { defaultEmbedConfigJson, defaultEmbedJson } from '@core/components/DiscordBot/defaultJsons';
@@ -35,7 +35,7 @@ export default async function SettingsGet(ctx) {
         serverTimezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
         activeTab: 'global',
         isZapHosting: convars.isZapHosting,
-        txDataPath: txEnv.dataPath,
+        txDataPath: EvoEnv.dataPath,
         defaults: {
             discord: {
                 embedJson: defaultEmbedJson,

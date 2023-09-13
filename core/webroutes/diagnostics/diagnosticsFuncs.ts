@@ -4,7 +4,7 @@ import humanizeDuration, { HumanizerOptions } from 'humanize-duration';
 import got from '@core/extras/got.js';
 import getOsDistro from '@core/extras/getOsDistro.js';
 import pidUsageTree from '@core/extras/pidUsageTree.js';
-import { txEnv } from '@core/globalData';
+import { EvoEnv } from '@core/globalData';
 import FXRunner from '@core/components/FxRunner';
 import HealthMonitor from '@core/components/HealthMonitor';
 import WebServer from '@core/components/WebServer';
@@ -162,7 +162,7 @@ export const getFXServerData = async () => {
             statusColor: 'success',
             status: ' ONLINE ',
             version: infoData.server,
-            versionMismatch: (getBuild(infoData.server) !== txEnv.fxServerVersion),
+            versionMismatch: (getBuild(infoData.server) !== EvoEnv.fxServerVersion),
             resources: infoData.resources.length,
             onesync: (infoData.vars && infoData.vars.onesync_enabled === 'true') ? 'enabled' : 'disabled',
             maxClients: (infoData.vars && infoData.vars.sv_maxClients) ? infoData.vars.sv_maxClients : '--',
@@ -328,7 +328,7 @@ export const getTxAdminData = async () => {
         loggerStatusServer: logger.server.getUsageStats(),
 
         //Env stuff
-        fxServerPath: txEnv.fxServerPath,
+        fxServerPath: EvoEnv.fxServerPath,
         fxServerHost: (fxRunner.fxServerHost)
             ? fxRunner.fxServerHost
             : '--',

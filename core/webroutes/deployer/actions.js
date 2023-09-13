@@ -4,7 +4,7 @@ import { cloneDeep }  from 'lodash-es';
 import slash from 'slash';
 import mysql from 'mysql2/promise'
 import consts from '@core/extras/consts';
-import { txEnv, convars } from '@core/globalData';
+import { EvoEnv, convars } from '@core/globalData';
 import { validateModifyServerConfig } from '../../extras/fxsConfigHelper';
 import consoleFactory from '@extras/console';
 const console = consoleFactory(modulename);
@@ -115,7 +115,7 @@ async function handleSetVariables(ctx) {
         } catch (error) {
             const msgHeader = `<b>Database connection failed:</b> ${error.message}`;
             if (error.code == 'ECONNREFUSED') {
-                let specificError = (txEnv.isWindows)
+                let specificError = (EvoEnv.isWindows)
                     ? 'If you do not have a database installed, you can download and run XAMPP.'
                     : 'If you do not have a database installed, you must download and run MySQL or MariaDB.';
                 if (userVars.dbPort !== 3306) {

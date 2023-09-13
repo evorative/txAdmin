@@ -5,7 +5,7 @@ import { setTimeout as sleep } from 'timers/promises';
 import { parseArgsStringToArgv } from 'string-argv';
 import StreamValues from 'stream-json/streamers/StreamValues';
 
-import { convars, txEnv } from '@core/globalData';
+import { convars, EvoEnv } from '@core/globalData';
 import { validateFixServerConfig } from '@core/extras/fxsConfigHelper';
 import OutputHandler from './outputHandler';
 
@@ -111,7 +111,7 @@ export default class FXRunner {
             getMutableConvars(true),
             extraArgs,
             '+set', 'onesync', this.config.onesync,
-            '+sets', 'txAdmin-version', txEnv.txAdminVersion,
+            '+sets', 'txAdmin-version', EvoEnv.EvorativeVersion,
             '+setr', 'txAdmin-menuEnabled', globals.config.menuEnabled,
             '+set', 'txAdmin-luaComHost', txAdminInterface,
             '+set', 'txAdmin-luaComToken', globals.webServer.luaComToken,
@@ -120,13 +120,13 @@ export default class FXRunner {
         ].flat(2);
 
         // Configure spawn parameters according to the environment
-        if (txEnv.isWindows) {
+        if (EvoEnv.isWindows) {
             this.spawnVariables = {
-                command: `${txEnv.fxServerPath}/FXServer.exe`,
+                command: `${EvoEnv.fxServerPath}/FXServer.exe`,
                 args: cmdArgs,
             };
         } else {
-            const alpinePath = path.resolve(txEnv.fxServerPath, '../../');
+            const alpinePath = path.resolve(EvoEnv.fxServerPath, '../../');
             this.spawnVariables = {
                 command: `${alpinePath}/opt/cfx-server/ld-musl-x86_64.so.1`,
                 args: [

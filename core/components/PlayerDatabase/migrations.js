@@ -20,7 +20,7 @@ export default async (dbo) => {
     }
     if (dbo.data.version > DATABASE_VERSION) {
         console.error(`Your players database is on v${dbo.data.version}, and this txAdmin supports up to v${DATABASE_VERSION}.`);
-        console.error('This means you likely downgraded your txAdmin version. Please update txAdmin.');
+        console.error('This means you likely downgraded your Evorative version. Please update txAdmin.');
         process.exit(1);
     }
 

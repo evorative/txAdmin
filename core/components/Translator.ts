@@ -2,7 +2,7 @@ const modulename = 'Translator';
 import fs from 'node:fs';
 import path from 'node:path';
 import Polyglot from 'node-polyglot';
-import { txEnv } from '@core/globalData';
+import { EvoEnv } from '@core/globalData';
 import localeMap from '@shared/localeMap';
 import consoleFactory from '@extras/console';
 const console = consoleFactory(modulename);
@@ -21,7 +21,7 @@ export default class Translator {
 
     constructor() {
         this.language = globals.config.language;
-        this.customLocalePath = path.join(txEnv.dataPath, 'locale.json');
+        this.customLocalePath = path.join(EvoEnv.dataPath, 'locale.json');
 
         //Load language
         this.setupTranslator(true);

@@ -4,7 +4,7 @@ import open from 'open';
 
 import got from '@core/extras/got.js';
 import getOsDistro from '@core/extras/getOsDistro.js';
-import { convars, txEnv } from '@core/globalData';
+import { convars, EvoEnv } from '@core/globalData';
 import consoleFactory from '@extras/console';
 const console = consoleFactory();
 
@@ -122,7 +122,7 @@ export const printBanner = async () => {
     let addrs;
     if (convars.forceInterface == false || convars.forceInterface == '0.0.0.0') {
         addrs = [
-            (txEnv.isWindows) ? 'localhost' : 'your-public-ip',
+            (EvoEnv.isWindows) ? 'localhost' : 'your-public-ip',
         ];
         if (ipRes.value) {
             addrs.push(ipRes.value);
@@ -160,7 +160,7 @@ export const printBanner = async () => {
     }
 
     //Opening page
-    if (txEnv.isWindows && adminPinRes.value) {
+    if (EvoEnv.isWindows && adminPinRes.value) {
         open(`http://localhost:${convars.txAdminPort}/auth#${adminPinRes.value}`).catch((e) => {});
     }
 
