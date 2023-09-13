@@ -164,8 +164,8 @@ export const generateStatusMessage = (
         embed.setColor(placeholders.statusColor as ColorResolvable);
         embed.setTimestamp();
         embed.setFooter({
-            iconURL: 'https://cdn.discordapp.com/emojis/1062339910654246964.webp?size=96&quality=lossless',
-            text: `txAdmin ${txEnv.txAdminVersion} • Updated every minute`,
+            iconURL: 'https://media.evorative.com/img/logo/main.png',
+            text: `Evorative ${txEnv.txAdminVersion} • Updated every minute`,
 
         });
     } catch (error) {

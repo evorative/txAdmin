@@ -27,8 +27,8 @@ const humanizer = humanizeDuration.humanizer({
 });
 
 const footer = {
-    iconURL: 'https://cdn.discordapp.com/emojis/1062339910654246964.webp?size=96&quality=lossless',
-    text: `txAdmin ${txEnv.txAdminVersion}`,
+    iconURL: 'https://media.evorative.com/img/logo/main.png',
+    text: `Evorative ${txEnv.txAdminVersion}`,
 }
 
 
